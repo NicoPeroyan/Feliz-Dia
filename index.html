@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="Un pequeño homenaje a mamá, a su amor inmenso y a la hermosa familia que construimos juntos.">
+  <title>Para mamá, con todo mi amor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ivory: #faf9f6;
+      --paper: #fffefa;
+      --sage: #879581;
+      --sage-deep: #62735e;
+      --sage-pale: #e8ede5;
+      --rose: #ffe5d9;
+      --rose-deep: #d89e89;
+      --lavender: #eee8f2;
+      --sand: #e9d9c1;
+      --gold: #b99a69;
+      --ink: #353a32;
+      --muted: #797c73;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Poppins", "Segoe UI", sans-serif;
+      --shadow: 0 22px 70px rgba(67, 71, 58, 0.11);
+    }
+
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    body.modal-open { overflow: hidden; }
+
+    button, a { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 3px solid var(--sage-deep);
+      outline-offset: 4px;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--sage-deep);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      content: "";
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(790px, 100svh);
+      align-items: center;
+      overflow: hidden;
+      padding: 64px 0 82px;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      top: -18%;
+      right: -13%;
+      width: min(660px, 67vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(135, 149, 129, .18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 44px rgba(232, 237, 229, .25), 0 0 0 90px rgba(232, 237, 229, .18);
+      content: "";
+    }
+
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      bottom: 7%;
+      left: -7%;
+      width: 190px;
+      height: 190px;
+      border: 1px solid rgba(185, 154, 105, .24);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: clamp(40px, 7vw, 100px);
+    }
+
+    .hero-copy { position: relative; z-index: 1; }
+
+    .hero h1 {
+      max-width: 620px;
+      margin: 22px 0 19px;
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 7.3vw, 6.6rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .99;
+    }
+
+    .hero h1 em {
+      color: var(--sage-deep);
+      font-weight: 500;
+    }
+
+    .hero-text {
+      max-width: 465px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(.95rem, 1.25vw, 1.05rem);
+    }
+
+    .hero-text strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--sage-deep);
+      box-shadow: 0 9px 22px rgba(98, 115, 94, .2);
+      color: #fffefa;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .035em;
+      padding: 0 25px;
+      text-decoration: none;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #53644f;
+      box-shadow: 0 13px 28px rgba(98, 115, 94, .25);
+    }
+
+    .hero .button { margin-top: 29px; }
+
+    .button svg,
+    .music-toggle svg { width: 17px; height: 17px; }
+
+    .hero-art {
+      position: relative;
+      width: min(100%, 450px);
+      aspect-ratio: .88;
+      justify-self: center;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 7% 9% 8% 13%;
+      overflow: hidden;
+      border: 9px solid rgba(255, 254, 250, .85);
+      border-radius: 48% 48% 43% 43% / 39% 39% 53% 53%;
+      background: var(--sage-pale);
+      box-shadow: var(--shadow);
+      transform: rotate(3deg);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo-note {
+      position: absolute;
+      right: 0;
+      bottom: 8%;
+      width: 172px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 14px;
+      background: rgba(255, 254, 250, .82);
+      box-shadow: 0 15px 40px rgba(67, 71, 58, .12);
+      backdrop-filter: blur(12px);
+      transform: rotate(-3deg);
+    }
+
+    .photo-note span {
+      display: block;
+      color: var(--sage-deep);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .photo-note p {
+      margin: 4px 0 0;
+      font-family: var(--serif);
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.35;
+    }
+
+    .orbit {
+      position: absolute;
+      top: 0;
+      right: 1%;
+      width: 80px;
+      height: 80px;
+      color: var(--gold);
+      opacity: .75;
+      animation: drift 6s ease-in-out infinite;
+    }
+
+    .story-video {
+      padding: 54px 0 88px;
+      background: linear-gradient(180deg, rgba(232,237,229,.22), var(--ivory));
+    }
+
+    .story-heading {
+      margin-bottom: 26px;
+      text-align: center;
+    }
+
+    .story-heading h2 {
+      margin: 0;
+      color: var(--sage-deep);
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .video-frame {
+      width: 100%;
+      max-width: 800px;
+      margin-inline: auto;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 22px;
+      background: rgba(255, 254, 250, .82);
+      box-shadow: var(--shadow);
+      padding: 8px;
+    }
+
+    .video-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border-radius: 15px;
+      background: var(--sage-pale);
+      object-fit: contain;
+    }
+
+    .music-player {
+      position: fixed;
+      z-index: 10;
+      top: 22px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px 9px 9px;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 999px;
+      background: rgba(255, 254, 250, .88);
+      box-shadow: 0 8px 26px rgba(67, 71, 58, .1);
+      backdrop-filter: blur(14px);
+    }
+
+    .music-toggle {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: var(--sage-pale);
+      color: var(--sage-deep);
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .music-toggle:hover { transform: scale(1.06); background: #dce5d9; }
+
+    .music-label {
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .music-label strong {
+      display: block;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .section { padding: 112px 0; }
+
+    .memories {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(232,237,229,.42), rgba(250,249,246,0) 90%);
+    }
+
+    .section-heading {
+      max-width: 620px;
+      margin: 0 auto 54px;
+      text-align: center;
+    }
+
+    .section-heading h2,
+    .letter-copy h2 {
+      margin: 14px 0 11px;
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: 1.12;
+    }
+
+    .section-heading p {
+      max-width: 480px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .memory-card {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 17px;
+      background: rgba(255, 254, 250, .79);
+      box-shadow: 0 12px 34px rgba(67, 71, 58, .07);
+      cursor: pointer;
+      overflow: hidden;
+      padding: 12px 12px 17px;
+      text-align: left;
+      transition: transform .35s cubic-bezier(.2,.75,.3,1), box-shadow .35s ease;
+    }
+
+    .memory-card:hover {
+      transform: translateY(-8px) rotate(-.6deg);
+      box-shadow: 0 23px 48px rgba(67, 71, 58, .13);
+    }
+
+    .memory-card:nth-child(2n):hover { transform: translateY(-8px) rotate(.6deg); }
+
+    .memory-image {
+      width: 100%;
+      aspect-ratio: 1.12;
+      border-radius: 10px;
+      background: var(--lavender);
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .memory-card:hover .memory-image { transform: scale(1.025); }
+
+    .memory-card:nth-child(3n + 1) .memory-image { background: var(--rose); }
+    .memory-card:nth-child(3n + 2) .memory-image { background: var(--sage-pale); }
+    .memory-card:nth-child(3n) .memory-image { background: var(--lavender); }
+
+    .card-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 5px 0;
+    }
+
+    .card-caption strong {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .card-caption span {
+      flex: none;
+      color: var(--sage-deep);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .letter {
+      position: relative;
+      overflow: hidden;
+      padding: 115px 0 125px;
+      background: var(--rose);
+      isolation: isolate;
+    }
+
+    .letter::before,
+    .letter::after {
+      position: absolute;
+      z-index: -1;
+      width: 330px;
+      height: 330px;
+      border: 1px solid rgba(185, 154, 105, .32);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .letter::before { top: -165px; left: -135px; box-shadow: 0 0 0 35px rgba(255,255,255,.17); }
+    .letter::after { right: -115px; bottom: -220px; width: 430px; height: 430px; }
+
+    .letter-copy {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .letter-copy h2 { margin-top: 19px; }
+
+    .letter-copy > p {
+      max-width: 510px;
+      margin: 0 auto;
+      color: #71665e;
+      font-size: 14px;
+    }
+
+    .letter-copy .button { margin-top: 27px; }
+
+    .revealed-message {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows .65s ease, opacity .55s ease, margin .55s ease;
+    }
+
+    .revealed-message > div { overflow: hidden; }
+
+    .revealed-message.is-visible {
+      grid-template-rows: 1fr;
+      margin-top: 30px;
+      opacity: 1;
+    }
+
+    .message-inner {
+      max-width: 570px;
+      margin: 0 auto;
+      padding: 25px 30px;
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 18px;
+      background: rgba(255, 254, 250, .57);
+      color: #5f5b53;
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2.3vw, 1.5rem);
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    .message-signature {
+      display: block;
+      margin-top: 12px;
+      color: var(--sage-deep);
+      font-family: var(--sans);
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 23px 20px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-align: center;
+    }
+
+    .modal {
+      position: fixed;
+      z-index: 30;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(40, 44, 38, .56);
+      opacity: 0;
+      backdrop-filter: blur(7px);
+      transition: opacity .28s ease;
+    }
+
+    .modal[hidden] { display: none; }
+    .modal.is-open { opacity: 1; }
+
+    .modal-panel {
+      position: relative;
+      display: grid;
+      width: min(860px, 100%);
+      max-height: min(680px, calc(100svh - 48px));
+      grid-template-columns: 1.05fr .95fr;
+      overflow: auto;
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 30px 100px rgba(0,0,0,.22);
+      transform: translateY(14px) scale(.985);
+      transition: transform .35s cubic-bezier(.2,.75,.3,1);
+    }
+
+    .modal.is-open .modal-panel { transform: translateY(0) scale(1); }
+
+    .modal-image-wrap { min-height: 360px; background: var(--sage-pale); }
+
+    .modal-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+
+    .modal-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(28px, 5vw, 55px);
+    }
+
+    .modal-copy h2 {
+      margin: 14px 0 13px;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+    }
+
+    .modal-copy p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .modal-close {
+      position: absolute;
+      z-index: 1;
+      top: 13px;
+      right: 13px;
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 50%;
+      background: rgba(255,254,250,.9);
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    .modal-close:hover { transform: rotate(90deg); }
+
+    #confetti-canvas {
+      position: fixed;
+      z-index: 40;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(9px) rotate(4deg); }
+    }
+
+    @media (max-width: 780px) {
+      .hero { min-height: auto; padding: 110px 0 80px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 38px; }
+      .hero-copy { text-align: center; }
+      .hero-text { margin-inline: auto; }
+      .hero-art { width: min(78%, 390px); }
+      .memory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+      .section { padding: 85px 0; }
+      .section-heading { margin-bottom: 38px; }
+    }
+
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 34px, 420px); }
+      .hero { padding-top: 104px; }
+      .hero h1 { font-size: clamp(3.15rem, 16vw, 4.7rem); }
+      .hero-art { width: 88%; }
+      .photo-note { right: -10px; width: 155px; }
+      .music-player { top: 12px; right: 12px; }
+      .section { padding: 74px 0; }
+      .memory-grid { gap: 12px; }
+      .memory-card { padding: 8px 8px 12px; border-radius: 13px; }
+      .card-caption { display: block; padding: 10px 3px 0; }
+      .card-caption strong { display: block; font-size: 16px; line-height: 1.3; }
+      .card-caption span { display: block; margin-top: 5px; font-size: 8px; }
+      .letter { padding: 85px 0; }
+      .modal { padding: 13px; }
+      .modal-panel { max-height: calc(100svh - 26px); grid-template-columns: 1fr; }
+      .modal-image-wrap, .modal-image { min-height: 0; height: min(43svh, 330px); }
+      .modal-copy { padding: 23px 25px 29px; }
+      .modal-copy h2 { font-size: 2.15rem; }
+      .modal-close { top: 9px; right: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio id="ambient-audio" src="cancion.mp3" preload="auto" loop></audio>
+  <div class="music-player">
+    <button class="music-toggle" id="music-toggle" type="button" aria-label="Reproducir música" aria-pressed="false">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 10 6-10 6V6Z" fill="currentColor"/></svg>
+      <svg class="pause-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" hidden><path d="M8 6h3v12H8zM14 6h3v12h-3z" fill="currentColor"/></svg>
+    </button>
+    <span class="music-label"><strong>Una melodía para vos</strong><span id="music-status">Música ambiental · opcional</span></span>
+  </div>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Con todo mi amor</span>
+          <h1 id="hero-title">Para vos,<br><em>mamá.</em></h1>
+          <p class="hero-text">En vos vive la calma de la naturaleza y la fuerza de una <strong>leona que siempre cuida a su manada.</strong> Hoy celebramos todo lo que sos y todo el amor que nos das.</p>
+          <a class="button" id="start-experience" href="#recuerdos">
+            Empezar este viaje
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-art" aria-label="Un recuerdo familiar">
+          <svg class="orbit" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 5c4 20 14 30 34 34-20 4-30 14-34 34-4-20-14-30-34-34C36 35 46 25 50 5Z" stroke="currentColor" stroke-width="1.3"/>
+            <circle cx="50" cy="50" r="4" fill="currentColor"/>
+          </svg>
+          <div class="hero-photo">
+            <img src="foto1.jpg" alt="Un instante especial para recordar" data-local-photo>
+          </div>
+          <div class="photo-note">
+            <span>Nuestra raíz, nuestra fuerza</span>
+            <p>El amor que siempre nos guía.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-video" aria-labelledby="story-title">
+      <div class="wrap">
+        <header class="story-heading">
+          <h2 id="story-title">Una historia hecha de amor</h2>
+        </header>
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline aria-label="Una historia hecha de amor">
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section memories" id="recuerdos" aria-labelledby="memories-title">
+      <div class="wrap">
+        <header class="section-heading">
+          <span class="eyebrow">Pequeños tesoros</span>
+          <h2 id="memories-title">Nuestra historia,<br>en momentos.</h2>
+          <p>Cada foto guarda un pedacito de todo lo que sentimos por vos. Elegí una para volver a vivirla.</p>
+        </header>
+        <div class="memory-grid" id="memory-grid" aria-label="Galería de recuerdos"></div>
+      </div>
+    </section>
+
+    <section class="letter" aria-labelledby="letter-title">
+      <div class="wrap letter-copy">
+        <span class="eyebrow">Una última sorpresa</span>
+        <h2 id="letter-title">Hay algo que<br>queremos decirte.</h2>
+        <p>Porque a veces el corazón siente tanto que merece encontrar sus propias palabras.</p>
+        <button class="button" id="reveal-button" type="button" aria-expanded="false" aria-controls="revealed-message">
+          Abrí tu regalo
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="revealed-message" id="revealed-message" aria-hidden="true">
+          <div>
+            <div class="message-inner">
+              Gracias por ser refugio, alegría y hogar. Nuestra vida es más bonita porque estás en ella. Te elegiríamos como mamá una y mil veces. Te amamos hasta la luna, y de vuelta.
+              <span class="message-signature">Con todo nuestro amor, tu manada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Hecho con amor, para la persona que hace que todo florezca.</footer>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <div class="modal" id="memory-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description" hidden>
+    <div class="modal-panel">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Cerrar recuerdo">&times;</button>
+      <div class="modal-image-wrap"><img class="modal-image" id="modal-image" alt=""></div>
+      <div class="modal-copy">
+        <span class="eyebrow">Un recuerdo para siempre</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const recuerdos = [
+      {
+        imagen: 'foto1.jpg',
+        titulo: 'Elegancia y Fuerza',
+        descripcion: 'Tu sonrisa tiene la fuerza de una leona y la paz de la naturaleza. Gracias por ser el pilar de nuestra vida.'
+      },
+      {
+        imagen: 'foto2.jpg',
+        titulo: 'Instinto Maternal',
+        descripcion: 'Ver el amor, la paciencia y la ternura con la que cuidás a nuestra hija es lo más hermoso del mundo.'
+      },
+      {
+        imagen: 'foto3.jpg',
+        titulo: 'Nuestra Protección',
+        descripcion: 'Como la leona que protege a su manada, con vos nada nos falta y siempre nos sentimos seguros.'
+      },
+      {
+        imagen: 'foto4.jpg',
+        titulo: 'Momentos Mágicos',
+        descripcion: 'Cada día a tu lado y al de nuestra nena es un regalo. Gracias por llenar la casa de risas.'
+      },
+      {
+        imagen: 'foto5.jpg',
+        titulo: 'El Mejor Equipo',
+        descripcion: 'Orgullosos de la familia que construimos juntos. Sos una mamá y compañera increíble.'
+      },
+      {
+        imagen: 'foto6.jpg',
+        titulo: 'Feliz Día de la Madre',
+        descripcion: 'Te amamos con todo el corazón. ¡Sos la reina de nuestra manada!'
+      }
+    ];
+
+    const grid = document.getElementById('memory-grid');
+    const modal = document.getElementById('memory-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const closeButton = document.getElementById('modal-close');
+    let lastFocusedElement = null;
+    const placeholderImage = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 700%22%3E%3Crect width=%22800%22 height=%22700%22 fill=%22%23e8ede5%22/%3E%3Cpath d=%22M0 560 220 350l140 130 150-190 290 270v140H0Z%22 fill=%22%23c8d2c2%22/%3E%3Ccircle cx=%22590%22 cy=%22180%22 r=%2270%22 fill=%22%23ffe5d9%22/%3E%3C/svg%3E';
+
+    function enableLocalPhotoFallback(image) {
+      image.addEventListener('error', function () {
+        if (image.dataset.fallbackTried !== 'jpeg' && /\.jpg$/i.test(image.src)) {
+          image.dataset.fallbackTried = 'jpeg';
+          image.src = image.src.replace(/\.jpg$/i, '.jpeg');
+          return;
+        }
+        if (image.dataset.fallbackTried !== 'placeholder') {
+          image.dataset.fallbackTried = 'placeholder';
+          image.src = placeholderImage;
+        }
+      });
+    }
+
+    document.querySelectorAll('[data-local-photo]').forEach(enableLocalPhotoFallback);
+
+    recuerdos.forEach(function (recuerdo, index) {
+      const card = document.createElement('button');
+      card.className = 'memory-card';
+      card.type = 'button';
+      card.setAttribute('aria-label', 'Abrir recuerdo: ' + recuerdo.titulo);
+
+      const image = document.createElement('img');
+      image.className = 'memory-image';
+      image.src = recuerdo.imagen;
+      image.alt = 'Recuerdo familiar: ' + recuerdo.titulo;
+      image.loading = 'lazy';
+      enableLocalPhotoFallback(image);
+
+      const caption = document.createElement('span');
+      caption.className = 'card-caption';
+      caption.innerHTML = '<strong></strong><span>Ver recuerdo <span aria-hidden="true">↗</span></span>';
+      caption.querySelector('strong').textContent = recuerdo.titulo;
+
+      card.append(image, caption);
+      card.addEventListener('click', function () {
+        openMemory(recuerdo, image.currentSrc || image.src, card);
+      });
+      grid.appendChild(card);
+    });
+
+    function openMemory(recuerdo, imageSource, trigger) {
+      lastFocusedElement = trigger;
+      modalTitle.textContent = recuerdo.titulo;
+      modalDescription.textContent = recuerdo.descripcion;
+      modalImage.src = imageSource;
+      modalImage.alt = 'Recuerdo familiar: ' + recuerdo.titulo;
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+      requestAnimationFrame(function () {
+        modal.classList.add('is-open');
+        closeButton.focus();
+      });
+    }
+
+    function closeMemory() {
+      if (modal.hidden) return;
+      modal.classList.remove('is-open');
+      document.body.classList.remove('modal-open');
+      window.setTimeout(function () {
+        modal.hidden = true;
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }, 280);
+    }
+
+    closeButton.addEventListener('click', closeMemory);
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) closeMemory();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (modal.hidden) return;
+      if (event.key === 'Escape') closeMemory();
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        closeButton.focus();
+      }
+    });
+
+    const audio = document.getElementById('ambient-audio');
+    const musicToggle = document.getElementById('music-toggle');
+    const musicStatus = document.getElementById('music-status');
+    const playIcon = musicToggle.querySelector('.play-icon');
+    const pauseIcon = musicToggle.querySelector('.pause-icon');
+
+    function syncMusicControls() {
+      const isPlaying = !audio.paused;
+      musicToggle.setAttribute('aria-label', isPlaying ? 'Pausar música' : 'Reproducir música');
+      musicToggle.setAttribute('aria-pressed', String(isPlaying));
+      playIcon.hidden = isPlaying;
+      pauseIcon.hidden = !isPlaying;
+      musicStatus.textContent = isPlaying ? 'Reproduciendo' : 'Música ambiental · opcional';
+    }
+
+    function playMusic() {
+      const playback = audio.play();
+      if (playback && typeof playback.catch === 'function') {
+        playback.catch(function (error) {
+          syncMusicControls();
+          if (error.name === 'AbortError') return;
+          musicStatus.textContent = 'No se pudo reproducir cancion.mp3';
+          console.error('No se pudo reproducir cancion.mp3:', error);
+        });
+      }
+    }
+
+    musicToggle.addEventListener('click', function () {
+      if (audio.paused) {
+        playMusic();
+      } else {
+        audio.pause();
+      }
+    });
+
+    document.getElementById('start-experience').addEventListener('click', playMusic);
+    audio.addEventListener('play', syncMusicControls);
+    audio.addEventListener('pause', syncMusicControls);
+    audio.addEventListener('playing', function () {
+      musicStatus.textContent = 'Reproduciendo';
+    });
+
+    audio.addEventListener('error', function () {
+      syncMusicControls();
+      musicStatus.textContent = 'No se pudo cargar cancion.mp3';
+    });
+
+    const revealButton = document.getElementById('reveal-button');
+    const revealedMessage = document.getElementById('revealed-message');
+    const canvas = document.getElementById('confetti-canvas');
+    const context = canvas.getContext('2d');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let particles = [];
+    let animationFrame = null;
+
+    function resizeCanvas() {
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(window.innerWidth * pixelRatio);
+      canvas.height = Math.floor(window.innerHeight * pixelRatio);
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    }
+
+    function celebrate() {
+      if (reduceMotion.matches) return;
+      resizeCanvas();
+      const colors = ['#879581', '#ffe5d9', '#eee8f2', '#e9d9c1', '#d89e89'];
+      particles = Array.from({ length: 110 }, function () {
+        return {
+          x: Math.random() * window.innerWidth,
+          y: -20 - Math.random() * window.innerHeight * .55,
+          size: 4 + Math.random() * 6,
+          speed: 1.7 + Math.random() * 3.5,
+          drift: (Math.random() - .5) * 2.2,
+          rotation: Math.random() * Math.PI,
+          spin: (Math.random() - .5) * .12,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        };
+      });
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+
+      function draw() {
+        context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        particles.forEach(function (particle) {
+          particle.y += particle.speed;
+          particle.x += particle.drift + Math.sin(particle.y / 36) * .55;
+          particle.rotation += particle.spin;
+          context.save();
+          context.translate(particle.x, particle.y);
+          context.rotate(particle.rotation);
+          context.fillStyle = particle.color;
+          context.globalAlpha = Math.max(0, 1 - particle.y / (window.innerHeight + 100));
+          context.fillRect(-particle.size / 2, -particle.size / 2, particle.size, particle.size * .68);
+          context.restore();
+        });
+        particles = particles.filter(function (particle) {
+          return particle.y < window.innerHeight + 30;
+        });
+        if (particles.length) {
+          animationFrame = requestAnimationFrame(draw);
+        } else {
+          context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+          animationFrame = null;
+        }
+      }
+
+      animationFrame = requestAnimationFrame(draw);
+    }
+
+    revealButton.addEventListener('click', function () {
+      const isVisible = revealedMessage.classList.toggle('is-visible');
+      revealedMessage.setAttribute('aria-hidden', String(!isVisible));
+      revealButton.setAttribute('aria-expanded', String(isVisible));
+      revealButton.firstChild.textContent = isVisible ? 'Volver a sorprenderme ' : 'Abrí tu regalo ';
+      if (isVisible) celebrate();
+    });
+
+    window.addEventListener('resize', function () {
+      if (animationFrame) resizeCanvas();
+    });
+    resizeCanvas();
+  </script>
+</body>
+</html>
